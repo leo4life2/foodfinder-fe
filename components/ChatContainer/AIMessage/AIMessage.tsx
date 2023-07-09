@@ -145,12 +145,13 @@ function parseText(text: string, foodInfoList: any[]): ParsedSection[] {
     } else if (trimmedLine.includes("Dish:") && currRestaurantObj) {
       const dishName = trimmedLine.split("Dish:")[1].trim().toLowerCase();
       let foundDish: Dish | undefined;
-      Object.keys(currRestaurantObj.menu).forEach((category) => {
+      for (const category of Object.keys(currRestaurantObj.menu)) {
         const dish = currRestaurantObj.menu[category].find(
           (d: Dish) => d.title.trim().toLowerCase() === dishName
         );
         if (dish) foundDish = dish;
-      });
+        if (foundDish) break;  // exit loop once we found the dish
+      }      
       if (foundDish) {
         const dishObject: DishSectionProps = {
           type: "dish",

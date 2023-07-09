@@ -93,7 +93,7 @@ export default function Home() {
         },
       ]);
   
-      const response = await fetch("http://foodfinder-be-production.up.railway.app/ask", {
+      const response = await fetch("https://foodfinder-be-production.up.railway.app/ask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

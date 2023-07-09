@@ -1,0 +1,25 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding-top: 45px;
+  background: linear-gradient(135deg, #FFF 0%, #FFF2F2 100%);
+  overflow: hidden;
+}
+
+.top-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bottom-container {
+  position: fixed; /* make it fixed position */
+  bottom: 60px; /* 60px from the bottom */
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  width: 870px;
+}

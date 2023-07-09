@@ -1,0 +1,26 @@
+.text-bar {
+  display: flex;
+  width: 805px;
+  height: 55px;
+  padding: 10px 25px 10px 25px;
+  align-items: center;
+  gap: 15px;
+  border-radius: 40px;
+  border: 2px solid var(--pink-4, #ffeadd);
+  background: #fff;
+}
+
+.send-icon {
+    flex-shrink: 0;
+}
+
+.user-input {
+    flex-grow: 1; /* Take up remaining space */
+    border: none;
+    outline: none; /* Removes the default browser outline */
+    color: black;
+}
+
+.user-input::placeholder {
+    color: gray;
+}

@@ -1,0 +1,38 @@
+.dish-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dish-section ul {
+  list-style-type: disc;
+}
+
+.dish-text {
+  color: #4f4f4f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dish-detail {
+  margin-left: 40px;
+  color: #4f4f4f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dish-title {
+  margin-left: 20px;
+}
+
+.dish-link {
+  color: var(--pink-1, #f66);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+}

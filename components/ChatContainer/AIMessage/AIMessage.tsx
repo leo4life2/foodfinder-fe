@@ -103,11 +103,24 @@ const AIMessage: React.FC<AIMessageProps> = ({ message, foodInfoList }) => {
   );
 };
 
+interface FoodInfo {
+  name: string;
+  menu: Record<string, Dish[]>;
+}
+
+interface Dish {
+  title: string;
+  link?: string;
+  description?: string;
+  price?: string;
+  img_url?: string;
+}
+
 function parseText(text: string, foodInfoList: any[]): ParsedSection[] {
   const lines = text.split("\n");
   const result: ParsedSection[] = [];
   let currRestaurant: string | null = null;
-  let currRestaurantObj: any = null;
+  let currRestaurantObj: FoodInfo | undefined;
   lines.forEach((line) => {
     const trimmedLine = line.trim();
     if (trimmedLine.includes("Restaurant:")) {
@@ -118,7 +131,7 @@ function parseText(text: string, foodInfoList: any[]): ParsedSection[] {
       if (currRestaurant === restaurantName) return; // If the restaurant is the same as the previous line, don't do anything (this is to prevent duplicate restaurant names
       currRestaurant = restaurantName;
       const restaurantObj = foodInfoList.find(
-        (obj) => obj.name.trim().toLowerCase() === restaurantName
+        (obj: FoodInfo) => obj.name.trim().toLowerCase() === restaurantName
       );
       if (restaurantObj) {
         currRestaurantObj = restaurantObj;
@@ -131,10 +144,10 @@ function parseText(text: string, foodInfoList: any[]): ParsedSection[] {
       });
     } else if (trimmedLine.includes("Dish:") && currRestaurantObj) {
       const dishName = trimmedLine.split("Dish:")[1].trim().toLowerCase();
-      let foundDish = null;
+      let foundDish: Dish | undefined;
       Object.keys(currRestaurantObj.menu).forEach((category) => {
         const dish = currRestaurantObj.menu[category].find(
-          (d: any) => d.title.trim().toLowerCase() === dishName
+          (d: Dish) => d.title.trim().toLowerCase() === dishName
         );
         if (dish) foundDish = dish;
       });
